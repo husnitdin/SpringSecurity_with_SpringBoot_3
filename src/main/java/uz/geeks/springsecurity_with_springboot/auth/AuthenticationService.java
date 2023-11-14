@@ -7,13 +7,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import uz.geeks.springsecurity_with_springboot.config.JwtService;
-import uz.geeks.springsecurity_with_springboot.exception.CustomResponseDto;
 import uz.geeks.springsecurity_with_springboot.exception.UserAlreadyRegisteredException;
-import uz.geeks.springsecurity_with_springboot.exception.UserNotExistException;
 import uz.geeks.springsecurity_with_springboot.token.Token;
 import uz.geeks.springsecurity_with_springboot.token.TokenRepository;
 import uz.geeks.springsecurity_with_springboot.token.TokenType;
@@ -66,10 +63,6 @@ public class AuthenticationService {
                 )
         );
         var user = repository.findByEmail(request.getEmail());
-
-        if(!user.isPresent()){
-            throw new UserNotExistException();
-        }
 
         var jwtToken = jwtService.generateToken(user.get());
         var refreshToken = jwtService.generateRefreshToken(user.get());

@@ -26,5 +26,14 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(TokenExpiredException.class)
+    public ResponseEntity<CustomResponseDto> handleLoginFailedException(TokenExpiredException e) {
+        CustomResponseDto body = new CustomResponseDto(
+                Status.UNAUTHORIZED.getCode(),
+                "Token expired"
+        );
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+    }
+
 }
 

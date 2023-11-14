@@ -4,23 +4,23 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomResponseDto {
-    private int status_code = 0;
+    private int statusCode = 0;
     private String message;
 
     public CustomResponseDto() {
     }
 
     public CustomResponseDto(int status_code, String message) {
-        this.status_code = status_code;
+        this.statusCode = status_code;
         this.message = message;
     }
 
     public int getStatusCode() {
-        return status_code;
+        return statusCode;
     }
 
     public void setStatusCode(int status_code) {
-        this.status_code = status_code;
+        this.statusCode = status_code;
     }
 
     public String getMessage() {

@@ -6,6 +6,7 @@ public enum Status {
     UNAUTHORIZED(401, "Unauthorized"),
 
     NOT_FOUND(404, "Not found"),
+    BAD_REQUEST(400, "Bad request"),
     WARNING(300, "Warning"),
     INFO(100, "Information");
 
